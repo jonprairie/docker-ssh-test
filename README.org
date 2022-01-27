@@ -5,13 +5,13 @@ This project is a relatively minimal demonstration of a Docker container running
 
 ** Build
 
-#+begin_src sh
+#+begin_src shell
   docker build -t ssh_test .
 #+end_src
 
 ** Run
 
-#+begin_src sh
+#+begin_src shell
   docker container run -d -p 55111:55111 \
          -v </path/to/.ssh>:/mnt/.ssh:ro \
          -e "GEMAIL=<git-email>" \
@@ -21,7 +21,7 @@ This project is a relatively minimal demonstration of a Docker container running
 
 ** Connect
 
-#+begin_src sh
+#+begin_src shell
   ssh -p 55111 -l root <ip>
 #+end_src
 
