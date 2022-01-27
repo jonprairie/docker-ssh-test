@@ -1,0 +1,29 @@
+* WSL Docker SSH Container
+This project is a relatively minimal demonstration of a Docker container running sshd from WSL2. The container allows the user to:
+- Connect via ssh using their own ssh keys
+- Login to other SSH services (eg github.com) - from within the container - using the user's ssh keys
+
+** Build
+
+#+begin_src sh
+  docker build -t ssh_test .
+#+end_src
+
+** Run
+
+#+begin_src sh
+  docker container run -d -p 55111:55111 \
+         -v </path/to/.ssh>:/mnt/.ssh:ro \
+         -e "GEMAIL=<git-email>" \
+         -e "GNAME=<git-name>" \
+         ssh_test:latest
+#+end_src
+
+** Connect
+
+#+begin_src sh
+  ssh -p 55111 -l root <ip>
+#+end_src
+
+
+
